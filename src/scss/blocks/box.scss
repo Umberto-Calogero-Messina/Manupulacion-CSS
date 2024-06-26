@@ -1,0 +1,95 @@
+@use '../mixins/pseudo.scss' as *;
+@use '../mixins/responsive.scss' as *;
+.box {
+  position: relative;
+  height: 240px;
+  background-image: url(../../assets/images/bg-main-mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 91px;
+
+  @include responsive(desktop) {
+    width: 483px;
+    height: 100vh;
+    background-image: url(../../assets/images/bg-main-desktop.png);
+  }
+
+  &__card {
+    width: 286px;
+    height: 157px;
+  }
+
+  &--logo {
+    position: absolute;
+    top: 17px;
+    left: 19px;
+    width: 54px;
+    height: 30px;
+  }
+
+  &--back,
+  &--front,
+  &__cvc,
+  &__number,
+  &__name,
+  &__date {
+    position: absolute;
+  }
+
+  &--back {
+    right: 16px;
+    top: 32px;
+    @include responsive(desktop) {
+      top: 40%;
+      left: 330px;
+      translate: 0 -40%;
+    }
+  }
+  &--front {
+    left: 16px;
+    top: 126px;
+    @include responsive(desktop) {
+      top: 60%;
+      left: 295px;
+      translate: 0 -60%;
+    }
+  }
+
+  &__cvc {
+    top: 73px;
+    left: 228px;
+  }
+
+  &__number {
+    top: 84px;
+    left: 25px;
+  }
+
+  &__name {
+    bottom: 21px;
+    left: 25px;
+  }
+
+  &__date {
+    bottom: 21px;
+    right: 20.5px;
+  }
+
+  //   &::after {
+  //     @include pseudo(30px, 30px);
+  //     top: 144px;
+  //     left: 36px;
+  //     border-radius: 50px;
+  //     background-color: white;
+  //   }
+
+  //   &::before {
+  //     @include pseudo(13.5px, 13.5px);
+  //     top: 152px;
+  //     left: 76px;
+  //     border: 1px solid white;
+  //     border-radius: 50px;
+  //     background-color: rgba(255, 255, 255, 0);
+  //     z-index: 1;
+  //   }
+}

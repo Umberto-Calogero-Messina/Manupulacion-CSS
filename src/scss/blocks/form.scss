@@ -1,0 +1,48 @@
+.form {
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    margin: 20px 24px;
+  }
+
+  &--flex {
+    display: flex;
+    gap: 11px;
+    margin: 10px 24px;
+  }
+
+  &__input {
+    width: 327px;
+    height: 45px;
+    border: 1px solid var(--border-form);
+    border-radius: 8px;
+
+    &--number {
+      width: 72px;
+      height: 45px;
+    }
+    &--numbercvc {
+      width: 164px;
+      height: 45px;
+    }
+  }
+
+  &__submit {
+    width: 327px;
+    height: 53px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-font);
+    color: white;
+    margin: 20px 28px;
+  }
+}
+.d-flex {
+  display: flex;
+  gap: 8px;
+}
+::placeholder {
+  margin-left: 16px; //no funciona
+}

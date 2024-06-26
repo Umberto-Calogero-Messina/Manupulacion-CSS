@@ -2,13 +2,66 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- PON UN FAVICON!!! -->
-    <link rel="icon" type="image/svg+xml" href="" />
+
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon-32x32.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CAMBIA EL TITLE!!! -->
-    <title>Vite Template</title>
+
+    <title>Frontend Mentor | Interactive card details form</title>
   </head>
   <body>
+    <main class="main">
+      <div class="box">
+        <div class="box__card box--back">
+          <span class="box__cvc text--color text--fontS">000</span>
+          <img src="./assets/images/bg-card-back.png" alt="" />
+        </div>
+        <div class="box__card box--front">
+          <span class="box__number text--color text--fontM">0000 0000 0000 0000</span>
+          <span class="box__name text--color text--fontS">JANE APPLESEED</span>
+          <span class="box__date text--color text--fontS">00/00</span>
+          <img src="./assets/images/bg-card-front.png" alt="" />
+          <img class="box--logo" src="./assets/images/card-logo.svg" alt="" />
+        </div>
+      </div>
+
+      <form id="form">
+        <div class="form__block">
+          <label for="name" class="text form__label">Cardholder Name</label>
+          <input type="text" name="" id="name" class="name form__input" placeholder="e.g. Jane Appleseed" />
+        </div>
+
+        <div class="form__block">
+          <label for="number" class="text form__label">Card Number</label>
+          <input type="text" name="" id="number" class="number form__input" placeholder="e.g. 1234 5678 9123 0000" />
+        </div>
+
+        <div class="form--flex">
+          <div>
+            <label for="" class="form_label label--number">Exp. Date (MM/YY)</label>
+            <div class="d-flex">
+              <input type="text" name="" id="" class="form__input form__input--number" placeholder="MM" />
+              <input type="text" name="" id="" class="form__input form__input--number" placeholder="YY" />
+            </div>
+          </div>
+
+          <div class="">
+            <label for="" class="form_label label--number">CVC</label>
+            <div>
+              <input type="text" name="" id="" class="form__input form__input--numbercvc" placeholder="e.g. 123" />
+            </div>
+          </div>
+        </div>
+
+        <input type="submit" value="Confirm" class="form__submit" />
+      </form>
+    </main>
+
+    <!-- <form id="form">
+      <label for="name">Nombre</label>
+      <input id="name" type="text" />
+    </form>
+
+    <input type="submit" value="Send" /> -->
     <script type="module" src="./js/index.js"></script>
   </body>
 </html>
