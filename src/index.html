@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
 
-    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon-32x32.png" />
+    <link rel="icon" type="image/svg+xml"
+      href="./assets/images/favicon-32x32.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Frontend Mentor | Interactive card details form</title>
@@ -12,47 +13,70 @@
     <main class="main">
       <div class="box">
         <div class="box__card box--back">
-          <span class="box__cvc text--color text--fontS">000</span>
-          <img src="./assets/images/bg-card-back.png" alt="" />
+          <span id="card-cvv"
+            class="box__cvc text--color text--fontS">000</span>
+          <img src="./assets/images/bg-card-back.png" alt />
         </div>
         <div class="box__card box--front">
-          <span class="box__number text--color text--fontM">0000 0000 0000 0000</span>
-          <span class="box__name text--color text--fontS">JANE APPLESEED</span>
-          <span class="box__date text--color text--fontS">00/00</span>
-          <img src="./assets/images/bg-card-front.png" alt="" />
-          <img class="box--logo" src="./assets/images/card-logo.svg" alt="" />
+          <span id="card-number"
+            class="box__number text--color text--fontM">0000 0000 0000
+            0000</span>
+          <span id="card-name" class="box__name text--color text--fontS">JANE
+            APPLESEED</span>
+          <div class="box__date">
+            <span id="card-month" class="text--color text--fontS">00</span>
+            <span class="text--color text--fontS">/</span>
+            <span id="card-year" class="text--color text--fontS">00</span>
+          </div>
+          <img src="./assets/images/bg-card-front.png" alt />
+          <img class="box--logo" src="./assets/images/card-logo.svg" alt />
         </div>
       </div>
 
       <form id="form">
         <div class="form__block">
           <label for="name" class="text form__label">Cardholder Name</label>
-          <input type="text" name="" id="name" class="name form__input" placeholder="e.g. Jane Appleseed" />
+          <input maxlength="25" type="text" name id="name"
+            class="name form__input"
+            placeholder="e.g. Jane Appleseed" />
+          <span id="name--log" class="text--red d-none">Can't be Blank</span>
         </div>
 
         <div class="form__block">
           <label for="number" class="text form__label">Card Number</label>
-          <input type="text" name="" id="number" class="number form__input" placeholder="e.g. 1234 5678 9123 0000" />
+          <input maxlength="16" type="text" name id="number"
+            class="number form__input"
+            placeholder="e.g. 1234 5678 9123 0000" />
+          <span id="number--log" class="text--red d-none">Can't be Blank</span>
         </div>
 
         <div class="form--flex">
           <div>
-            <label for="" class="form_label label--number">Exp. Date (MM/YY)</label>
+            <label for class="form_label label--number">Exp. Date
+              (MM/YY)</label>
             <div class="d-flex">
-              <input type="text" name="" id="" class="form__input form__input--number" placeholder="MM" />
-              <input type="text" name="" id="" class="form__input form__input--number" placeholder="YY" />
+              <input maxlength="2" type="text" name id="month"
+                class="form__input form__input--number"
+                placeholder="MM" />
+              <input maxlength="2" type="text" name id="year"
+                class="form__input form__input--number"
+                placeholder="YY" />
             </div>
+            <span id="month--log" class="text--red d-none">Can't be Blank</span>
           </div>
 
-          <div class="">
-            <label for="" class="form_label label--number">CVC</label>
+          <div class>
+            <label for class="form_label label--number">CVC</label>
             <div>
-              <input type="text" name="" id="" class="form__input form__input--numbercvc" placeholder="e.g. 123" />
+              <input maxlength="3" type="text" name id="cvv"
+                class="form__input form__input--numbercvc"
+                placeholder="e.g. 123" />
             </div>
+            <span id="cvv--log" class="text--red d-none">Can't be Blank</span>
           </div>
         </div>
 
-        <input type="submit" value="Confirm" class="form__submit" />
+        <input id="submit" type="submit" value="Confirm" class="form__submit" />
       </form>
     </main>
 
