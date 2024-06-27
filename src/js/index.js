@@ -38,11 +38,24 @@ const defaultMonthString = cardMonthElement.textContent;
 const defaultYearString = cardYearElement.textContent;
 const defaultCvvString = cardCvvElement.textContent;
 
+const inputAllElement = document.querySelectorAll('input[type=text]');
+
 const numersOnlyWarning = 'Wrong format, numbers only';
 const lettersOnlyWarning = 'Wrong format, letters only';
 
 const checkForm = event => {
   event.preventDefault();
+
+  for (const input of inputAllElement) {
+    input.classList.remove('error');
+    if (!input.value) {
+      input.classList.add('error');
+      input.nextElementSibling.classList.replace('d-none', 'd-block');
+    } else {
+      input.classList.remove('error');
+      input.nextElementSibling.classList.replace('d-block', 'd-none');
+    }
+  }
 };
 
 const checkInputName = event => {
@@ -52,7 +65,7 @@ const checkInputName = event => {
 
   nameErrorElement.classList.replace(containsNumbers ? 'd-none' : 'd-block', containsNumbers ? 'd-block' : 'd-none');
 
-  nameErrorElement.textContent = containsNumbers ? lettersOnlyWarning : '';
+  nameErrorElement.textContent = containsNumbers ? lettersOnlyWarning : "Can't be Blank";
 
   if (!inputName) {
     cardNameElement.textContent = defaultNameString;
@@ -67,13 +80,13 @@ const checkInputNumber = event => {
 
   const checkNumbers = /^\d*$/.test(inputNumber);
 
-  //Solo lee el segundo if
   numberErrorElement.classList.replace(
     inputNumber.length > 16 || !checkNumbers ? 'd-none' : 'd-block',
     inputNumber.length > 16 || !checkNumbers ? 'd-block' : 'd-none'
   );
 
-  numberErrorElement.textContent = inputNumber.length > 16 ? 'Only 16 numbers' : !checkNumbers ? numersOnlyWarning : '';
+  numberErrorElement.textContent =
+    inputNumber.length > 16 ? 'Only 16 numbers' : !checkNumbers ? numersOnlyWarning : "Can't be Blank";
 
   let formattedNumber = '';
 
@@ -93,7 +106,9 @@ const checkInputNumber = event => {
 };
 
 const checkInputMonth = event => {
-  const inputNumber = event.target.value;
+  const inputNumber = Number(event.target.value);
+
+  inputNumber > 12 ? (formMonth.value = 12) : event.target.value;
 
   const checkNumbers = /^\d*$/.test(inputNumber);
 
@@ -117,7 +132,7 @@ const checkInputYear = event => {
 
   monthErrorElement.classList.replace(checkNumbers ? 'd-block' : 'd-none', checkNumbers ? 'd-none' : 'd-block');
 
-  monthErrorElement.textContent = checkNumbers ? '' : numersOnlyWarning;
+  monthErrorElement.textContent = checkNumbers ? "Can't be Blank" : numersOnlyWarning;
 
   if (!inputNumber) {
     cardYearElement.textContent = defaultYearString;
@@ -132,10 +147,11 @@ const checkInputCvv = event => {
 
   cvvErrorElement.classList.replace(checkNumbers ? 'd-block' : 'd-none', checkNumbers ? 'd-none' : 'd-block');
 
-  cvvErrorElement.textContent = checkNumbers ? '' : numersOnlyWarning;
+  cvvErrorElement.textContent = checkNumbers ? "Can't be Blank" : numersOnlyWarning;
 
   if (!inputNumber) {
     cardCvvElement.textContent = defaultCvvString;
+
     return;
   }
 
@@ -150,25 +166,6 @@ const sendConfirmation = () => {
     { name: 'formYear', errorElement: monthErrorElement, errorMessage: `Can't be Blank` },
     { name: 'formCvv', errorElement: cvvErrorElement, errorMessage: `Can't be Blank` }
   ];
-
-  fieldsToValidate.forEach(event => {
-    const errorElement = event.errorElement;
-    let fieldValue = '';
-
-    if (event.name === 'textContent') {
-      fieldValue = formName && formName.value ? formName.value : '';
-    } else {
-      fieldValue = formName && formName[event.name] && formName[event.name].value ? formName[event.name].value : '';
-    }
-    if (!fieldValue) {
-      errorElement.classList.replace('d-none', 'd-block');
-      errorElement.textContent = event.errorMessage;
-      rootStyles.setProperty('--border-form', 'red'); // Error pone todo en red
-    } else {
-      errorElement.classList.replace('d-block', 'd-none');
-      errorElement.textContent = '';
-    }
-  });
 };
 
 formElement.addEventListener('submit', checkForm);

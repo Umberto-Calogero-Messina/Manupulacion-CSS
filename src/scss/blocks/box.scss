@@ -6,7 +6,6 @@
   background-image: url(../../assets/images/bg-main-mobile.png);
   background-repeat: no-repeat;
   background-size: cover;
-  margin-bottom: 91px;
 
   @include responsive(desktop) {
     width: 483px;
@@ -40,18 +39,18 @@
     right: 16px;
     top: 32px;
     @include responsive(desktop) {
-      top: 40%;
+      top: 60%;
       left: 330px;
-      translate: 0 -40%;
+      translate: 0 -60%;
     }
   }
   &--front {
     left: 16px;
     top: 126px;
     @include responsive(desktop) {
-      top: 60%;
+      top: 40%;
       left: 295px;
-      translate: 0 -60%;
+      translate: 0 -40%;
     }
   }
 

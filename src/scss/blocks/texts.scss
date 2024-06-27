@@ -1,5 +1,5 @@
 .text {
-  accent-color: var(--color-font); // no funciona
+  color: var(--color-font);
   text-align: left;
 }
 
@@ -19,4 +19,12 @@
 
 .text--red {
   color: red;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.col-6 {
+  width: 100%;
 }
