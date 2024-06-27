@@ -43,6 +43,8 @@ const inputAllElement = document.querySelectorAll('input[type=text]');
 const numersOnlyWarning = 'Wrong format, numbers only';
 const lettersOnlyWarning = 'Wrong format, letters only';
 
+const getCurrentYear = new Date().getFullYear() - 2000;
+
 const checkForm = event => {
   event.preventDefault();
 
@@ -55,6 +57,11 @@ const checkForm = event => {
       input.classList.remove('error');
       input.nextElementSibling.classList.replace('d-block', 'd-none');
     }
+  }
+
+  if (cardNumberElement.textContent.length < 19) {
+    numberErrorElement.classList.add('d-block');
+    numberErrorElement.textContent = 'Incorrect Card Value';
   }
 };
 
@@ -124,11 +131,15 @@ const checkInputMonth = event => {
     return;
   }
 
-  cardMonthElement.textContent = inputNumber;
+  cardMonthElement.textContent = formMonth.value;
 };
 const checkInputYear = event => {
   const inputNumber = event.target.value;
   const checkNumbers = /^\d*$/.test(inputNumber);
+
+  inputNumber < getCurrentYear && /^\d{2}$/.test(event.target.value)
+    ? (formYear.value = getCurrentYear)
+    : event.target.value;
 
   monthErrorElement.classList.replace(checkNumbers ? 'd-block' : 'd-none', checkNumbers ? 'd-none' : 'd-block');
 
@@ -139,7 +150,7 @@ const checkInputYear = event => {
     return;
   }
 
-  cardYearElement.textContent = inputNumber;
+  cardYearElement.textContent = formYear.value;
 };
 const checkInputCvv = event => {
   const inputNumber = event.target.value;
@@ -174,5 +185,3 @@ formNumber.addEventListener('input', checkInputNumber);
 formMonth.addEventListener('input', checkInputMonth);
 formYear.addEventListener('input', checkInputYear);
 formCvv.addEventListener('input', checkInputCvv);
-
-sendElement.addEventListener('click', sendConfirmation);
