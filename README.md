@@ -1,6 +1,6 @@
-# Título del proyecto
+# Interactive Card Details
 
-![Imagen del proyecto](https://github.com/eduardofierropro/Portafolio-y-CV/blob/main/IMAGEN-DEL-PROYECTO.jpg?raw=true)
+![Imagen del proyecto](https://raw.githubusercontent.com/Umberto-Calogero-Messina/interactive-card-details-form/b79e517354574d2b124650a1a8ad57447a5b737e/src/assets/images/Desktop.png)
 
 ## Ejemplo en vivo
 
